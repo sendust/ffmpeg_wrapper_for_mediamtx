@@ -31,21 +31,35 @@ chmod +x ffmpeg_wrapper.sh
 ```
 
 ### 2. MediaMTX `mediamtx.yml` 연동 예시
-MediaMTX가 시작될 때 자동으로 스크립트가 백그라운드에서 실행되도록 설정할 수 있습니다.
+MediaMTX가 시작후 vod 요청이 발생하면 자동으로 스크립트가 백그라운드에서 실행되도록 설정할 수 있습니다.
 ```yaml
 paths:
+  # example:
+  # my_camera:
+  #   source: rtsp://my_camera
+
+  # Settings under path "all_others" are applied to all paths that
+  # do not match another entry.
   decklink1:
-    runOnInit: /path/to/ffmpeg_wrapper.sh 1
-    runOnInitRestart: yes
+    runOnDemand: /home/sendust/mediamtx/run_decklink.sh 1
+    runOnDemandStartTimeout: 1s
+    runOnDemandCloseAfter: 1s
+
   decklink2:
-    runOnInit: /path/to/ffmpeg_wrapper.sh 2
-    runOnInitRestart: yes
+    runOnDemand: /home/sendust/mediamtx/run_decklink.sh 2
+    runOnDemandStartTimeout: 1s
+    runOnDemandCloseAfter: 1s
+
   decklink3:
-    runOnInit: /path/to/ffmpeg_wrapper.sh 3
-    runOnInitRestart: yes
+    runOnDemand: /home/sendust/mediamtx/run_decklink.sh 3
+    runOnDemandStartTimeout: 1s
+    runOnDemandCloseAfter: 1s
+
   decklink4:
-    runOnInit: /path/to/ffmpeg_wrapper.sh 4
-    runOnInitRestart: yes
+    runOnDemand: /home/sendust/mediamtx/run_decklink.sh 4
+    runOnDemandStartTimeout: 1s
+    runOnDemandCloseAfter: 1s
+
 ```
 
 ---
