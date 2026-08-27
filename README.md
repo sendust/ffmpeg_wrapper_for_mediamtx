@@ -34,12 +34,6 @@ chmod +x ffmpeg_wrapper.sh
 MediaMTX가 시작후 vod 요청이 발생하면 자동으로 스크립트가 백그라운드에서 실행되도록 설정할 수 있습니다.
 ```yaml
 paths:
-  # example:
-  # my_camera:
-  #   source: rtsp://my_camera
-
-  # Settings under path "all_others" are applied to all paths that
-  # do not match another entry.
   decklink1:
     runOnDemand: /home/sendust/mediamtx/run_decklink.sh 1
     runOnDemandStartTimeout: 1s
